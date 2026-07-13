@@ -16,15 +16,14 @@ export class Player
     private bet : number;
     private cards :Card[];
     private sum : number;
-    private deck :Deck;
+
     
-    constructor( deck :Deck , money:number, name:string ) 
+    constructor( money:number, name:string ,card1 :Card , card2 :Card) 
     {
         this.money=money;
         this.cards = [];
-        this.deck=deck;
-        this.cards.push(this.deck.drawCard());
-        this.cards.push(this.deck.drawCard());
+        this.addCard(card1);
+        this.addCard(card2);
         this.sum= this.calculateSum();
         this.bet=0;
     }
@@ -53,7 +52,7 @@ export class Player
   this.sum = sum;
   return sum;
 }
- public addCard(card: Card): void {
+public addCard(card: Card): void {
     this.cards.push(card);
   }
 }

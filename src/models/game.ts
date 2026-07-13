@@ -10,8 +10,8 @@ export class Game {
 
   constructor(playerMoney: number) {
     this.deck = new Deck();
-    this.player = new Player(this.deck, playerMoney, 'Player');
-    this.dealer = new Dealer(this.deck);
+    this.player = new Player(playerMoney, 'Player',this.deck.drawCard(),this.deck.drawCard());
+    this.dealer = new Dealer(this.deck.drawCard(),this.deck.drawCard());
   }
 
   public playerHit(): void {

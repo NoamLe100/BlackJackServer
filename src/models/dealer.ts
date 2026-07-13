@@ -10,10 +10,10 @@ export class Dealer {
   private cards: Card[];
   private sum: number;
 
-  constructor(deck: Deck) {
+  constructor(card1 :Card , card2 :Card) {
     this.cards = [];
-    this.cards.push(deck.drawCard());
-    this.cards.push(deck.drawCard());
+    this.addCard(card1);
+    this.addCard(card2);
     this.sum = 0;
   }
 
