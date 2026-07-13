@@ -1,4 +1,3 @@
-import { error } from 'node:console';
 import { Card, Suit, CardValue } from './card';
 
 const suits: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
@@ -29,7 +28,7 @@ export class Deck {
    const card= this.cards.pop();
    if (card === undefined)
    {
-    throw error("deck is empty");
+    throw   Error("deck is empty");
    }
    return card;
   }
