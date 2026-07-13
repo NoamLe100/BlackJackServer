@@ -48,9 +48,12 @@ export class Player
     {
     sum -= 10; 
     aceCount--;
-     }
+    }
 
   this.sum = sum;
   return sum;
 }
+ public addCard(card: Card): void {
+    this.cards.push(card);
+  }
 }
