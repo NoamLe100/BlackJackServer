@@ -23,11 +23,17 @@ export class Deck {
     return this.cards.length;
   }
 
-  public drawCard()
+  public drawCard(): Card
   {
-    return this.cards.pop();
+    const card = this.cards.pop();
+  if (card === undefined) 
+  {
+    throw new Error("Cannot draw a card: The deck is empty!");
+  }
+  return card;
   }
 }
+
 
   
    
