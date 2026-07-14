@@ -8,7 +8,8 @@ export class Game {
   private player: Player;
   private dealer: Dealer;
 
-  constructor(playerMoney: number) {
+  constructor(playerMoney: number)
+{
     this.deck = new Deck();
     this.player = new Player(playerMoney, 'Player',this.deck.drawCard(),this.deck.drawCard());
     this.dealer = new Dealer(this.deck.drawCard(),this.deck.drawCard());

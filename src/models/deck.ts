@@ -18,6 +18,7 @@ export class Deck {
       });
     }
   }
+  this.shuffle();
 }
   public getCardsRemaining(): number {
     return this.cards.length;
@@ -28,11 +29,26 @@ export class Deck {
    const card= this.cards.pop();
    if (card === undefined)
    {
-    throw   Error("deck is empty");
+    throw  Error("deck is empty");
    }
    return card;
   }
+public shuffle(): void {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const cardI = this.cards[i];
+      const cardJ = this.cards[j];
+
+      if (cardI === undefined || cardJ === undefined) {
+        continue; 
+      }
+
+      this.cards[i] = cardJ;
+      this.cards[j] = cardI;
+    }
+  }
 }
+
 
   
    
