@@ -34,6 +34,11 @@ export class Game {
   public getDealerSum(): number {
     return this.dealer.calculateSum();
   }
+  public ResetSums():void {
+    this.player.playerSetSum()
+    this.dealer.dealerSetSum()
+  }
+  
 
   public determineWinner(): string {
     const playerSum = this.getPlayerSum();

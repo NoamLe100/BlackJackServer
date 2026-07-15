@@ -45,4 +45,8 @@ export class Dealer {
   public getCards(): Card[] {
     return this.cards;
   }
+  public dealerSetSum() :void
+  {
+    this.sum=0;
+  }
 }

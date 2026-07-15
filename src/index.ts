@@ -21,6 +21,7 @@ app.post('/start', (req: Request, res: Response) => {
     playerSum: game.getPlayerSum(),
     dealerSum: game.getDealerSum()
   });
+  return;
 });
 
 app.post('/hit', (req: Request, res: Response) => {
@@ -37,7 +38,7 @@ app.post('/hit', (req: Request, res: Response) => {
       busted: true,
       result: 'Dealer wins - Player busted'
     });
-    return;
+    return;     
   }
 
   res.json({ playerSum, busted: false });
@@ -55,6 +56,8 @@ app.post('/stand', (req: Request, res: Response) => {
     dealerSum: game.getDealerSum(),
     result
   });
+  game.ResetSums();
+  return;  
 });
 
 app.listen(port, () => {

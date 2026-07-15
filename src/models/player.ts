@@ -11,15 +11,15 @@ const valueMap: Record<CardValue, number> = {
 
 export class Player
 {
-    private money :number;
+    private balance :number;
     private bet : number;
     private cards :Card[];
     private sum : number;
 
     
-    constructor( money:number, name:string ,card1 :Card , card2 :Card) 
+    constructor( balance:number, name:string ,card1 :Card , card2 :Card) 
     {
-        this.money=money;
+        this.balance=balance;
         this.cards = [];
         this.addCard(card1);
         this.addCard(card2);
@@ -54,4 +54,9 @@ export class Player
 public addCard(card: Card): void {
     this.cards.push(card);
   }
+public playerSetSum() : void
+{
+    this.sum=0;
 }
+}
+
