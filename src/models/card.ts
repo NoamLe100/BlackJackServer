@@ -6,5 +6,4 @@ export interface Card
 {
   suit: Suit;
   value: CardValue; 
-  imagePath: string;
 }

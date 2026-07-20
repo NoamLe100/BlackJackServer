@@ -1,62 +1,65 @@
-import { Card, Suit, CardValue } from './card';
+import { Card } from "./card"; 
 
-const suits: Suit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
-const values: CardValue[] = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+export class Player {
+  private balance: number;
+  private bet: number;
+  private cards: Card[];
 
-const valueMap: Record<CardValue, number> = {
-  'A': 11, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10,
-  'J': 10, 'Q': 10, 'K': 10
-};
-
-
-export class Player
-{
-    private balance :number;
-    private bet : number;
-    private cards :Card[];
-    private sum : number;
-
-    
-    constructor( balance:number, name:string ,card1 :Card , card2 :Card) 
-    {
-        this.balance=balance;
-        this.cards = [];
-        this.addCard(card1);
-        this.addCard(card2);
-        this.sum= this.calculateSum();
-        this.bet=0;
-    }
-    
-    public calculateSum(): number {
-  let sum = 0;
-  let aceCount = 0;
-
-  for (const card of this.cards) {
-    if (card.value === 'A') {
-      aceCount++;
-      sum += 11;
-    } else if (card.value === 'J' || card.value === 'Q' || card.value === 'K') {
-      sum += 10;
-    } else {
-      sum += Number(card.value);
-    }
+  constructor(startingBalance: number, card1: Card, card2: Card) {
+    this.balance = startingBalance;  
+    this.bet = 0;        
+    this.cards = [];
+    this.addCard(card1);
+    this.addCard(card2);
+  }
+  public placeBet(amount: number): void {   
+  this.bet = amount;
+  }
+  public getBet():number{
+    return this.bet;
   }
 
-  while (sum > 21 && aceCount > 0) 
-    {
-    sum -= 10; 
-    aceCount--;
+  public calculateSum(): number {
+    let sum = 0;
+    let aceCount = 0;
+
+    for (const card of this.cards) {
+      if (card.value === "A") {
+        aceCount++;
+        sum += 11;
+      } else if (
+        card.value === "J" ||
+        card.value === "Q" ||
+        card.value === "K"
+      ) {
+        sum += 10;
+      } else {
+        sum += Number(card.value);
+      }
     }
 
-  this.sum = sum;
-  return sum;
+    while (sum > 21 && aceCount > 0) {
+      sum -= 10;
+      aceCount--;
+    }
+
+    return sum;
+  }
+  public getBalance(): number {
+  return this.balance;
 }
-public addCard(card: Card): void {
+  public getCards(): Card[] {
+    return this.cards;
+  }
+  public addCard(card: Card): void {
     this.cards.push(card);
   }
-public playerSetSum() : void
-{
-    this.sum=0;
-}
-}
 
+  public addBalance(WinOrLose : boolean):void
+  {
+    if (WinOrLose==true)
+      this.balance += this.bet;
+    else
+      this.balance -=this.bet;
+  }
+}

@@ -37,6 +37,9 @@ export class Dealer {
     this.sum = sum;
     return sum;
   }
+  public calculateFirstSum() : number {
+    return valueMap[this.cards[0]!.value];
+  }
 
   public shouldHit(): boolean {
     return this.calculateSum() < 17;
@@ -49,4 +52,5 @@ export class Dealer {
   {
     this.sum=0;
   }
+  
 }
